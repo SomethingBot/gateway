@@ -9,10 +9,10 @@ trigger:
     - pull_request
 
 steps:
-- name: build
-  image: golang:1.16
-  commands:
-  - go build .
+  - name: build
+    image: golang:1.16
+    commands:
+    - go build .
 
 ---
 kind: pipeline
@@ -24,9 +24,11 @@ trigger:
     - push
     - tag
 
-depends_on: build
+depends_on: 
+  - build
 
-- name: test
-  image: golang:1.16
-  commands:
-  - go test -v ./...
+steps:
+  - name: test
+    image: golang:1.16
+    commands:
+    - go test -v ./...
