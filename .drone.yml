@@ -1,19 +1,32 @@
 kind: pipeline
 type: docker
-name: testing
+name: build
+
+trigger:
+  event:
+    - push
+    - tag
+    - pull_request
+
+steps:
+- name: build
+  image: golang:1.16
+  commands:
+  - go build .
+
+---
+kind: pipeline
+type: docker
+name: test
 
 trigger:
   event:
     - push
     - tag
 
-steps:
+depends_on: build
+
 - name: test
   image: golang:1.16
   commands:
   - go test -v ./...
-
-- name: build
-  image: golang:1.16
-  commands:
-  - go build .
