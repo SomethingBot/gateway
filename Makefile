@@ -16,4 +16,4 @@ lint:
 	go fmt -v
 
 run: build
-	./serviceregistry
+	./gateway
