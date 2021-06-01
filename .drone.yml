@@ -12,7 +12,7 @@ steps:
   - name: build
     image: golang:1.16
     commands:
-    - go build .
+      - go build .
 
 ---
 kind: pipeline
@@ -24,11 +24,11 @@ trigger:
     - push
     - tag
 
-depends_on: 
+depends_on:
   - build
 
 steps:
   - name: test
     image: golang:1.16
     commands:
-    - go test -v ./...
+      - go test -v ./...
