@@ -15,4 +15,4 @@
 # vendor/
 
 # program binary outputted by go build
-./gateway
+gateway
