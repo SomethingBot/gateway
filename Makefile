@@ -19,7 +19,7 @@ test-integration:
 	go test -tags=integration
 
 lint:
-	go fmt -v
+	go fmt ./...
 
 run: build
 	GATEWAY_ETCD_ENDPOINTS=localhost:2379 GATEWAY_ADDRESS=0.0.0.0:8987 ./gateway
