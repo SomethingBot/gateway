@@ -6,8 +6,8 @@ build:
 	go build -ldflags "-X main.GitCommit=$(GitCommit) -X main.GitTag=$(GitTag) -X main.Mode=Dev"
 
 test:
-	go vet
-	go test
+	go vet ./...
+	go test ./...
 
 spawn-etcd:
 	podman run -p 2379:2379 --rm --name gateway-etcd-dev quay.io/coreos/etcd:v3.4.16 /usr/local/bin/etcd -listen-client-urls http://0.0.0.0:2379 -advertise-client-urls http://0.0.0.0:2379
