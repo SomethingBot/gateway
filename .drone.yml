@@ -9,6 +9,10 @@ trigger:
     - pull_request
 
 steps:
+  - name: fmt
+    image: golang:1.16
+    commands:
+      - test -z $(go fmt ./...)
   - name: build
     image: golang:1.16
     commands:
